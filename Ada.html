@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Ada Ostorga — Invitación</title>
+  <meta name="theme-color" content="#8E1330" />
+  <meta name="description" content="Invitación al cumpleaños de Ada Ostorga. 7:30pm • Café de María en Basilea, San Salvador. Dresscode: Toque de Burgundy." />
+
+  <!-- Tailwind CDN + configuración de paleta -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0A0A0A',
+            fog: '#EDEDED',
+            accent: '#8E1330',
+            accentDark: '#6E0F24'
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            ui: ['Inter', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+  <style>
+    :root{
+      --accent:#8E1330; --accent-700:#6E0F24;
+    }
+    /* Suavidad para transiciones */
+    .fade-enter{opacity:0; transform:translateY(8px)}
+    .fade-enter-active{opacity:1; transform:none; transition:all .6s ease}
+
+    /* Botón minimal */
+    .btn{ @apply inline-flex items-center gap-2 rounded-2xl border border-ink px-5 py-3 text-ink hover:bg-accent hover:text-white hover:border-accent transition; }
+
+    /* Fondo texturizado sutil para el overlay */
+    .pattern::before{
+      content:''; position:absolute; inset:0; background:radial-gradient(circle at 20% -10%, rgba(255,255,255,.15), transparent 40%),
+        radial-gradient(circle at 80% 110%, rgba(255,255,255,.08), transparent 40%);
+      pointer-events:none;
+    }
+  </style>
+</head>
+<body class="bg-white text-ink font-ui">
+  <!-- Audio (se reproduce tras gesto del usuario) -->
+  <audio id="track" preload="metadata" src="https://birthday.bodamartinezostorga.com/f.mp3"></audio>
+
+  <!-- Overlay de pre-invitación -->
+  <section id="gate" class="fixed inset-0 z-50 bg-white flex items-center justify-center">
+    <div class="pattern absolute inset-0 bg-white"></div>
+    <img alt="Lazo burdeos" loading="lazy" src="https://birthday.bodamartinezostorga.com/ch.png" class="pointer-events-none select-none opacity-20 absolute -top-16 right-0 w-[260px] md:w-[360px]" />
+
+    <div class="relative z-10 max-w-lg mx-auto text-center p-8">
+      <h1 class="font-display text-4xl md:text-5xl tracking-tight leading-tight">Ada Ostorga</h1>
+      <p class="mt-3 text-base md:text-lg text-ink/80">Estás invitad@ a celebrar conmigo. Un momento íntimo, elegante y con un <span class="text-accent font-semibold">toque Burgundy</span>.</p>
+      <button id="enterBtn" class="btn mt-6">Ingresar <i class="ph ph-arrow-right"></i></button>
+      <p class="mt-3 text-xs text-ink/60">Al ingresar, la música iniciará.</p>
+    </div>
+  </section>
+
+  <!-- Main Invitation -->
+  <main id="invitation" class="min-h-screen overflow-x-hidden">
+    <!-- Hero -->
+    <header class="relative isolate pt-20 pb-16 md:pt-28 md:pb-24">
+      <img alt="Lazo burdeos decorativo" loading="lazy" src="https://birthday.bodamartinezostorga.com/ch.png" class="absolute -top-10 -right-6 md:-right-4 w-[220px] md:w-[320px] opacity-80 select-none" />
+      <div class="max-w-4xl mx-auto px-6">
+        <span class="inline-flex items-center gap-2 text-xs tracking-[.14em] uppercase text-ink/70"><i class="ph ph-sparkle text-accent"></i>Invitación</span>
+        <h2 class="font-display text-5xl md:text-6xl leading-[1.05] mt-2">Birthday<br><span class="text-accent">Ada Ostorga</span></h2>
+        <p class="mt-6 text-lg md:text-xl text-ink/80 max-w-3xl">Será una noche especial para compartir risas, música y buena compañía. Tu presencia hará la diferencia. ✨</p>
+      </div>
+    </header>
+
+    <!-- Datos clave -->
+    <section class="py-10 md:py-14">
+      <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-ink/10 p-6 shadow-soft fade-enter" style="animation:fadeIn .6s ease .1s both">
+          <div class="flex items-center gap-3"><i class="ph ph-clock text-2xl text-accent"></i><h3 class="font-medium">Hora</h3></div>
+          <p class="mt-2 text-ink/80">7:30 pm</p>
+        </div>
+        <div class="rounded-2xl border border-ink/10 p-6 shadow-soft fade-enter" style="animation:fadeIn .6s ease .2s both">
+          <div class="flex items-center gap-3"><i class="ph ph-map-pin text-2xl text-accent"></i><h3 class="font-medium">Lugar</h3></div>
+          <p class="mt-2 text-ink/80">Café de María en Basilea<br>San Salvador</p>
+        </div>
+        <div class="rounded-2xl border border-ink/10 p-6 shadow-soft fade-enter" style="animation:fadeIn .6s ease .3s both">
+          <div class="flex items-center gap-3"><i class="ph ph-dress text-2xl text-accent"></i><h3 class="font-medium">Dresscode</h3></div>
+          <p class="mt-2 text-ink/80">Toque de <span class="text-accent font-semibold">Burgundy</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mensaje -->
+    <section class="pb-20 md:pb-28">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="prose prose-neutral max-w-none">
+          <p class="text-lg text-ink/80">Gracias por ser parte de mis momentos importantes. Quiero celebrar este nuevo año contigo, con una copa en alto y mucha alegría. Si te nace, puedes llevar un detalle en color burdeos para hacer match con la noche. 🥂</p>
+        </div>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="#maps" class="btn" onclick="openMap(event)"><i class="ph ph-navigation-arrow"></i>Cómo llegar</a>
+          <button class="btn" onclick="toggleAudio()"><i class="ph ph-play-circle" id="audioIcon"></i><span id="audioLabel">Reproducir música</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer minimal -->
+    <footer class="border-t border-ink/10 py-8 text-center text-xs text-ink/60">
+      <p>Con cariño, Ada • <span class="text-accent">#BurgundyNight</span></p>
+    </footer>
+  </main>
+
+  <script>
+    const gate = document.getElementById('gate');
+    const enterBtn = document.getElementById('enterBtn');
+    const audio = document.getElementById('track');
+    const audioIcon = document.getElementById('audioIcon');
+    const audioLabel = document.getElementById('audioLabel');
+
+    function startExperience(){
+      gate.classList.add('opacity-0');
+      setTimeout(()=>{ gate.style.display='none'; }, 400);
+      audio.volume = 0.9; // dulce pero presente
+      audio.play().then(()=>{
+        audioIcon?.classList.remove('ph-play-circle');
+        audioIcon?.classList.add('ph-pause-circle');
+        if(audioLabel) audioLabel.textContent = 'Pausar música';
+      }).catch(()=>{
+        // Si el navegador bloquea, dejamos el botón manual activo
+      });
+    }
+
+    enterBtn.addEventListener('click', startExperience);
+
+    function toggleAudio(){
+      if(audio.paused){
+        audio.play();
+        audioIcon.classList.remove('ph-play-circle');
+        audioIcon.classList.add('ph-pause-circle');
+        audioLabel.textContent = 'Pausar música';
+      } else {
+        audio.pause();
+        audioIcon.classList.add('ph-play-circle');
+        audioIcon.classList.remove('ph-pause-circle');
+        audioLabel.textContent = 'Reproducir música';
+      }
+    }
+    window.toggleAudio = toggleAudio;
+
+    function openMap(e){
+      e?.preventDefault();
+      const q = encodeURIComponent('Café de María en Basilea, San Salvador');
+      const url = `https://www.google.com/maps/search/?api=1&query=${q}`;
+      window.open(url, '_blank');
+    }
+    window.openMap = openMap;
+  </script>
+
+  <style>
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+  </style>
+</body>
+</html>
