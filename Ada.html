@@ -51,6 +51,17 @@
 
     body {
       font-feature-settings: "liga" on, "clig" on;
+      overflow-x: hidden;
+    }
+
+    .ornament {
+      max-width: min(80vw, 360px);
+    }
+
+    @media (min-width: 768px) {
+      .ornament {
+        max-width: none;
+      }
     }
 
     .btn {
@@ -107,7 +118,7 @@
   <!-- Overlay de pre-invitación -->
   <section id="gate" class="fixed inset-0 z-50 bg-white flex items-center justify-center overflow-hidden">
     <div class="gate-pattern absolute inset-0"></div>
-    <img alt="Lazo burdeos" loading="lazy" src="https://birthday.bodamartinezostorga.com/ch.png" class="pointer-events-none select-none opacity-30 absolute -top-20 right-6 w-[320px] md:w-[420px] mix-blend-multiply" />
+    <img alt="Lazo burdeos" loading="lazy" src="https://birthday.bodamartinezostorga.com/ch.png" class="ornament pointer-events-none select-none opacity-30 absolute -top-20 right-6 w-[320px] md:w-[420px] max-w-[85vw] md:max-w-none mix-blend-multiply" />
 
     <div class="relative z-10 max-w-xl mx-auto text-center px-7 py-12">
       <span class="uppercase tracking-extra text-xs text-ink/60">Sesión privada</span>
@@ -121,18 +132,19 @@
   <!-- Main Invitation -->
   <main id="invitation" class="min-h-screen overflow-x-hidden">
     <!-- Hero editorial -->
-    <header class="relative isolate pt-20 pb-24 md:pt-28 md:pb-32">
+    <header class="relative isolate pt-20 pb-24 md:pt-28 md:pb-32 bg-gradient-to-b from-accent/5 via-white to-white">
       <div class="absolute inset-y-0 right-0 left-1/3 -z-10 hidden lg:block opacity-20 mix-blend-multiply" style="background-image:url('https://bodamartinezostorga.com/fd.png'); background-size: 520px; background-repeat: no-repeat; background-position: center right;"></div>
-      <img alt="Lazo burdeos decorativo" loading="lazy" src="https://birthday.bodamartinezostorga.com/ch.png" class="absolute -top-10 right-2 md:-top-16 md:right-10 w-[220px] md:w-[320px] opacity-70 mix-blend-multiply animate-[floatSlow_8s_ease-in-out_infinite]" />
+      <img alt="Lazo burdeos decorativo" loading="lazy" src="https://birthday.bodamartinezostorga.com/ch.png" class="ornament absolute -top-10 right-2 md:-top-16 md:right-10 w-[220px] md:w-[320px] max-w-[70vw] md:max-w-none opacity-70 mix-blend-multiply animate-[floatSlow_8s_ease-in-out_infinite]" />
 
       <div class="max-w-6xl mx-auto px-6 lg:px-12">
         <div class="grid gap-16 lg:grid-cols-[minmax(0,1fr)_380px] items-center">
           <div>
-            <span class="inline-flex items-center gap-3 text-[0.75rem] uppercase tracking-[0.45em] text-ink/60"><span class="h-px w-12 bg-ink/30"></span>Celebración</span>
+            <span class="inline-flex items-center gap-3 text-[0.75rem] uppercase tracking-[0.45em] text-accent/80"><span class="h-px w-12 bg-accent/40"></span>Celebración</span>
             <h2 class="mt-6 font-signature text-[3.6rem] leading-tight md:text-[4.2rem] text-ink">Birthday Ada Ostorga</h2>
+            <div class="mt-6 h-px w-16 bg-accent/30"></div>
             <div class="mt-6 max-w-2xl space-y-5">
               <p class="font-display text-xl md:text-2xl leading-relaxed text-ink/80">Una velada para brindar, recordar y crear nuevos capítulos. El café se viste de blanco, sombras suaves y destellos borgoña para recibirte.</p>
-              <p class="text-ink/65">Te espero para compartir risas, música y un toque de champagne. Mantén tu esencia y añade un detalle Burgundy para sellar la noche.</p>
+              <p class="text-ink/65">Te espero para compartir risas, música y un toque de champagne. Mantén tu esencia y añade un detalle <span class="text-accent font-medium">Burgundy</span> para sellar la noche.</p>
             </div>
             <div class="mt-10 flex flex-wrap gap-4">
               <a href="#detalles" class="btn">Detalles <i class="ph ph-arrow-bend-down-right text-base"></i></a>
@@ -162,33 +174,53 @@
     <!-- Datos clave -->
     <section id="detalles" class="py-16 md:py-20">
       <div class="max-w-5xl mx-auto px-6 lg:px-12">
-        <div class="grid gap-8 md:grid-cols-3">
-          <article class="group relative rounded-[28px] border border-ink/10 bg-white/90 backdrop-blur-sm p-8 shadow-subtle">
-            <span class="absolute -top-5 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-accent"><i class="ph ph-clock text-xl"></i></span>
-            <h3 class="mt-6 font-display text-xl text-ink">Hora</h3>
-            <p class="mt-2 text-ink/70 text-base">7:30 pm</p>
-            <div class="absolute -bottom-10 right-6 w-24 opacity-20 group-hover:opacity-40 transition">
-              <img src="https://bodamartinezostorga.com/fd.png" alt="Decoración champagne" />
-            </div>
-          </article>
+        <div class="relative">
+          <img
+            alt="Lazo burdeos pequeño"
+            loading="lazy"
+            src="https://birthday.bodamartinezostorga.com/ch.png"
+            class="ornament pointer-events-none select-none absolute -top-14 left-2 w-20 sm:w-24 max-w-[60vw] sm:max-w-none opacity-60 mix-blend-multiply"
+          />
+          <div class="grid gap-8 md:grid-cols-3">
+            <article class="group relative rounded-[28px] border border-accent/20 bg-white/90 backdrop-blur-sm p-8 shadow-subtle">
+              <span class="absolute -top-5 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 bg-white text-accent"><i class="ph ph-clock text-xl"></i></span>
+              <h3 class="mt-6 font-display text-xl text-ink">Hora</h3>
+              <p class="mt-2 text-ink/70 text-base">7:30 pm</p>
+              <div class="absolute -bottom-10 right-6 w-24 opacity-20 group-hover:opacity-40 transition">
+                <img
+                  src="https://bodamartinezostorga.com/fd.png"
+                  alt="Decoración champagne"
+                  class="ornament max-w-[40vw] md:max-w-none"
+                />
+              </div>
+            </article>
 
-          <article class="group relative rounded-[28px] border border-ink/10 bg-white/90 backdrop-blur-sm p-8 shadow-subtle">
-            <span class="absolute -top-5 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-accent"><i class="ph ph-map-pin text-xl"></i></span>
-            <h3 class="mt-6 font-display text-xl text-ink">Lugar</h3>
-            <p class="mt-2 text-ink/70 text-base leading-relaxed">Café de María en Basilea<br>San Salvador</p>
-            <div class="absolute -bottom-10 right-6 w-24 opacity-20 group-hover:opacity-40 transition">
-              <img src="https://bodamartinezostorga.com/fd.png" alt="Decoración champagne" />
-            </div>
-          </article>
+            <article class="group relative rounded-[28px] border border-accent/20 bg-white/90 backdrop-blur-sm p-8 shadow-subtle">
+              <span class="absolute -top-5 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 bg-white text-accent"><i class="ph ph-map-pin text-xl"></i></span>
+              <h3 class="mt-6 font-display text-xl text-ink">Lugar</h3>
+              <p class="mt-2 text-ink/70 text-base leading-relaxed">Café de María en Basilea<br>San Salvador</p>
+              <div class="absolute -bottom-10 right-6 w-24 opacity-20 group-hover:opacity-40 transition">
+                <img
+                  src="https://bodamartinezostorga.com/fd.png"
+                  alt="Decoración champagne"
+                  class="ornament max-w-[40vw] md:max-w-none"
+                />
+              </div>
+            </article>
 
-          <article class="group relative rounded-[28px] border border-ink/10 bg-white/90 backdrop-blur-sm p-8 shadow-subtle">
-            <span class="absolute -top-5 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-accent"><i class="ph ph-dress text-xl"></i></span>
-            <h3 class="mt-6 font-display text-xl text-ink">Dresscode</h3>
-            <p class="mt-2 text-ink/70 text-base">Toque de <span class="font-semibold text-accent">Burgundy</span></p>
-            <div class="absolute -bottom-10 right-6 w-24 opacity-20 group-hover:opacity-40 transition">
-              <img src="https://bodamartinezostorga.com/fd.png" alt="Decoración champagne" />
-            </div>
-          </article>
+            <article class="group relative rounded-[28px] border border-accent/20 bg-white/90 backdrop-blur-sm p-8 shadow-subtle">
+              <span class="absolute -top-5 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/20 bg-white text-accent"><i class="ph ph-dress text-xl"></i></span>
+              <h3 class="mt-6 font-display text-xl text-ink">Dresscode</h3>
+              <p class="mt-2 text-ink/70 text-base">Toque de <span class="font-semibold text-accent">Burgundy</span></p>
+              <div class="absolute -bottom-10 right-6 w-24 opacity-20 group-hover:opacity-40 transition">
+                <img
+                  src="https://bodamartinezostorga.com/fd.png"
+                  alt="Decoración champagne"
+                  class="ornament max-w-[40vw] md:max-w-none"
+                />
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -196,9 +228,9 @@
     <!-- Mensaje editorial -->
     <section class="pb-24 md:pb-32">
       <div class="max-w-4xl mx-auto px-6 lg:px-12">
-        <div class="relative overflow-hidden rounded-[36px] border border-ink/10 bg-white/85 backdrop-blur-sm p-10 md:p-14 shadow-subtle">
-          <div class="absolute -top-20 -right-16 w-64 opacity-25" aria-hidden="true">
-            <img src="https://bodamartinezostorga.com/fd.png" alt="Champagne line art" />
+        <div class="relative overflow-hidden rounded-[36px] border border-accent/15 bg-white/85 backdrop-blur-sm p-10 md:p-14 shadow-subtle">
+          <div class="absolute -top-20 -right-16 w-64 opacity-25 pointer-events-none select-none" aria-hidden="true">
+            <img src="https://bodamartinezostorga.com/fd.png" alt="Champagne line art" class="ornament max-w-[60vw] md:max-w-none" />
           </div>
           <div class="relative z-10">
             <p class="font-display text-lg md:text-xl leading-relaxed text-ink/80">Gracias por ser parte de mis momentos importantes. Quiero celebrar este nuevo año contigo, con una copa en alto y mucha alegría. Si te nace, puedes llevar un detalle en color burdeos para hacer match con la noche. 🥂</p>
